@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/i-vishi/crowdsourcing-blockchain#readme",
   "dependencies": {
+    "@truffle/hdwallet-provider": "^1.2.0",
     "fs-extra": "^9.0.1",
     "ganache-cli": "^6.12.1",
     "mocha": "^8.2.1",
