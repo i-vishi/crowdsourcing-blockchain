@@ -4,8 +4,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from "../src/theme";
+import { Box, Container, CssBaseline } from "@material-ui/core";
+import theme from "../components/theme";
+import TopNavBar from "../components/TopNavBar";
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
@@ -30,7 +31,12 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Component {...pageProps} />
+        <TopNavBar />
+        <Container>
+          <Box>
+            <Component {...pageProps} />
+          </Box>
+        </Container>
       </ThemeProvider>
     </>
   );
