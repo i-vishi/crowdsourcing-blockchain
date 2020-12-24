@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/prop-types */
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,6 +8,7 @@ import {
   CardContent,
   Button,
   Typography,
+  Link,
 } from "@material-ui/core";
 
 const useStyles = makeStyles({
@@ -27,9 +29,13 @@ export default function CampaignCard({ campaign }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary">
-          View Campaign
-        </Button>
+        <Link href={`/campaigns/${campaign.header}`}>
+          <a style={{ textDecoration: "none", color: "white" }}>
+            <Button size="small" color="primary">
+              View Campaign
+            </Button>
+          </a>
+        </Link>
       </CardActions>
     </Card>
   );
