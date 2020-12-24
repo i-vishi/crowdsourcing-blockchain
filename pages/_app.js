@@ -22,7 +22,7 @@ export default function MyApp(props) {
   return (
     <>
       <Head>
-        <title>CrowdSource My Campaign</title>
+        <title>CrowdsourceIt!</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
