@@ -4,14 +4,15 @@ import React from "react";
 import { useRouter } from "next/router";
 import {
   Box,
+  Button,
   Card,
   CardContent,
   Grid,
-  makeStyles,
   Typography,
 } from "@material-ui/core";
 import web3 from "../../ethereum/web3";
 import Campaign from "../../ethereum/campaign";
+import ContributeForm from "../../components/ContributeForm";
 
 function ShowCampaign(props) {
   const router = useRouter();
@@ -30,13 +31,13 @@ function ShowCampaign(props) {
       description: "Owner of this campaign and can create spending requests",
     },
     {
-      header: props.bal,
-      meta: "Current Balance",
+      header: web3.utils.fromWei(props.bal, "ether"),
+      meta: "Current Balance (ether)",
       description: "The Balance of this campaign",
     },
     {
       header: props.minimumContribution,
-      meta: "Minimum Contribution",
+      meta: "Minimum Contribution(Wei)",
       description:
         "The minimum contribution in Wei to enter to contribute to this campaign",
     },
@@ -56,7 +57,7 @@ function ShowCampaign(props) {
   return (
     <Box m={4}>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={7} md={9} lg={10}>
+        <Grid item xs={12} sm={12} md={7} lg={8}>
           <Typography variant="h4" component="h2">
             Campaign Details
           </Typography>
@@ -95,10 +96,13 @@ function ShowCampaign(props) {
               </Grid>
             ))}
           </Grid>
+          <Button variant="contained" color="primary">
+            View Requests
+          </Button>
         </Grid>
-        <Grid item xs={12} sm={5} md={3} lg={2}>
+        <Grid item xs sm md lg>
           <Typography variant="h5" component="h2">
-            Right
+            <ContributeForm address={address} />
           </Typography>
         </Grid>
       </Grid>
