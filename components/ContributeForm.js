@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   wrapper: {
-    margin: theme.spacing(1),
     position: "relative",
   },
   buttonSuccess: {
@@ -44,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ContributeForm({ address }) {
+export default function ContributeForm({ address, minContribution }) {
   const router = useRouter();
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -86,7 +85,7 @@ export default function ContributeForm({ address }) {
   }
 
   return (
-    <Box m={3} p={1} pt={6}>
+    <Box m={2} p={1} pt={6}>
       <Grid container direction="column">
         <Typography variant="h5">Contribute to this Campaign</Typography>
         <form
@@ -97,8 +96,7 @@ export default function ContributeForm({ address }) {
           <Grid item>
             <Typography variant="h6">Amount to Contribute</Typography>
             <Typography variant="caption" display="block" gutterBottom>
-              {/* {`Minimum Contribution: ${address}`} */}
-              (Minimum Contribution: 100 Wei)
+              {`(Minimum Contribution: ${minContribution} Wei)`}
             </Typography>
             <TextField
               id="outlined-amount"
@@ -111,6 +109,7 @@ export default function ContributeForm({ address }) {
                 ),
               }}
               type="number"
+              style={{ marginBottom: 10 }}
             />
           </Grid>
           {state.errorMessage.length > 0 && (

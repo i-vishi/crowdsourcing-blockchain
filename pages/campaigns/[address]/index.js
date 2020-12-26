@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React from "react";
@@ -8,11 +9,12 @@ import {
   Card,
   CardContent,
   Grid,
+  Link,
   Typography,
 } from "@material-ui/core";
-import web3 from "../../ethereum/web3";
-import Campaign from "../../ethereum/campaign";
-import ContributeForm from "../../components/ContributeForm";
+import web3 from "../../../ethereum/web3";
+import Campaign from "../../../ethereum/campaign";
+import ContributeForm from "../../../components/ContributeForm";
 
 function ShowCampaign(props) {
   const router = useRouter();
@@ -95,14 +97,25 @@ function ShowCampaign(props) {
                 </Card>
               </Grid>
             ))}
+            <Grid item xs={12} md={6} lg={6}>
+              <Link href={`/campaigns/${address}/requests`}>
+                <Button
+                  style={{ margin: 10 }}
+                  variant="contained"
+                  color="primary"
+                >
+                  View Requests
+                </Button>
+              </Link>
+            </Grid>
           </Grid>
-          <Button variant="contained" color="primary">
-            View Requests
-          </Button>
         </Grid>
         <Grid item xs sm md lg>
           <Typography variant="h5" component="h2">
-            <ContributeForm address={address} />
+            <ContributeForm
+              address={address}
+              minContribution={props.minimumContribution}
+            />
           </Typography>
         </Grid>
       </Grid>

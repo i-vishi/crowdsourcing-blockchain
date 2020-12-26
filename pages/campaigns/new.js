@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   wrapper: {
-    margin: theme.spacing(1),
     position: "relative",
   },
   buttonSuccess: {
@@ -83,13 +82,13 @@ export default function NewCampaign() {
       <Typography variant="h3" component="h1">
         Create a Campaign
       </Typography>
-      <Grid container item xs={12} sm={10} md={8} lg={8}>
+      <Grid container direction="column" alignItems="stretch">
         <form
           className={classes.root}
           autoComplete="off"
           onSubmit={createCampaign}
         >
-          <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Grid item>
             <Typography variant="overline" display="block" gutterBottom>
               Minimum Contribution
             </Typography>
@@ -112,14 +111,7 @@ export default function NewCampaign() {
               {state.errorMessage}
             </Alert>
           )}
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-            style={{ display: "flex", alignItems: "center" }}
-          >
+          <Grid item style={{ display: "flex", alignItems: "center" }}>
             <div className={classes.wrapper}>
               <Button
                 variant="contained"
