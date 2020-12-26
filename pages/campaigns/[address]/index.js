@@ -39,7 +39,7 @@ function ShowCampaign(props) {
     },
     {
       header: props.minimumContribution,
-      meta: "Minimum Contribution(Wei)",
+      meta: "Minimum Contribution (Wei)",
       description:
         "The minimum contribution in Wei to enter to contribute to this campaign",
     },
@@ -57,69 +57,67 @@ function ShowCampaign(props) {
   ];
 
   return (
-    <Box m={4}>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={12} md={7} lg={8}>
-          <Typography variant="h4" component="h2">
-            Campaign Details
-          </Typography>
-          <Grid
-            container
-            spacing={2}
-            direction="row"
-            justify="flex-start"
-            alignItems="flex-start"
-          >
-            {summary.map((detail) => (
-              <Grid item xs={12} md={6} lg={6} key={detail.meta}>
-                <Card
-                  style={{
-                    height: 180,
-                    margin: 10,
-                    overflowWrap: "break-word",
-                  }}
-                  variant="outlined"
-                >
-                  <CardContent>
-                    <Typography variant="h6" component="h4">
-                      {detail.header}
-                    </Typography>
-                    <Typography
-                      style={{ marginBottom: 12 }}
-                      color="textSecondary"
-                    >
-                      {detail.meta}
-                    </Typography>
-                    <Typography variant="body1" component="p">
-                      {detail.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-            <Grid item xs={12} md={6} lg={6}>
-              <Link href={`/campaigns/${address}/requests`}>
-                <Button
-                  style={{ margin: 10 }}
-                  variant="contained"
-                  color="primary"
-                >
-                  View Requests
-                </Button>
-              </Link>
+    <Grid container spacing={2}>
+      <Grid item xs={12} sm={12} md={7} lg={8}>
+        <Typography variant="h4" component="h2">
+          Campaign Details
+        </Typography>
+        <Grid
+          container
+          spacing={2}
+          direction="row"
+          justify="flex-start"
+          alignItems="flex-start"
+        >
+          {summary.map((detail) => (
+            <Grid item xs={12} md={6} lg={6} key={detail.meta}>
+              <Card
+                style={{
+                  height: 180,
+                  margin: 10,
+                  overflowWrap: "break-word",
+                }}
+                variant="outlined"
+              >
+                <CardContent>
+                  <Typography variant="h6" component="h4">
+                    {detail.header}
+                  </Typography>
+                  <Typography
+                    style={{ marginBottom: 12 }}
+                    color="textSecondary"
+                  >
+                    {detail.meta}
+                  </Typography>
+                  <Typography variant="body1" component="p">
+                    {detail.description}
+                  </Typography>
+                </CardContent>
+              </Card>
             </Grid>
+          ))}
+          <Grid item xs={12} md={6} lg={6}>
+            <Link href={`/campaigns/${address}/requests`}>
+              <Button
+                style={{ margin: 10 }}
+                variant="contained"
+                color="primary"
+              >
+                View Requests
+              </Button>
+            </Link>
           </Grid>
         </Grid>
-        <Grid item xs sm md lg>
-          <Typography variant="h5" component="h2">
-            <ContributeForm
-              address={address}
-              minContribution={props.minimumContribution}
-            />
-          </Typography>
-        </Grid>
       </Grid>
-    </Box>
+      <Grid item xs sm md lg>
+        <Box m={3} p={1} pt={4}>
+          <ContributeForm
+            address={address}
+            minContribution={props.minimumContribution}
+          />
+        </Box>
+      </Grid>
+    </Grid>
   );
 }
 

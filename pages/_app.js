@@ -33,7 +33,7 @@ export default function MyApp(props) {
         <CssBaseline />
         <TopNavBar />
         <Container>
-          <Box>
+          <Box m={1} p={1} pt={2}>
             <Component {...pageProps} />
           </Box>
         </Container>

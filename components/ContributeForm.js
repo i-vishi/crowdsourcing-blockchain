@@ -4,7 +4,6 @@ import React from "react";
 import clsx from "clsx";
 import { useRouter } from "next/router";
 import {
-  Box,
   Button,
   CircularProgress,
   Grid,
@@ -15,6 +14,7 @@ import {
 } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { Alert, AlertTitle } from "@material-ui/lab";
+
 import Campaign from "../ethereum/campaign";
 import web3 from "../ethereum/web3";
 
@@ -59,12 +59,9 @@ export default function ContributeForm({ address, minContribution }) {
     [classes.buttonSuccess]: loading,
   });
 
-  async function makeContribution() {
-    event.preventDefault();
-
-    setState({
-      errorMessage: "",
-    });
+  const makeContribution = async (e) => {
+    e.preventDefault();
+    setState({ ...state, errorMessage: "" });
     setLoading(true);
 
     const campaign = Campaign(address);
@@ -78,67 +75,65 @@ export default function ContributeForm({ address, minContribution }) {
       });
       router.push(`/campaigns/${address}`);
     } catch (err) {
-      setState({ errorMessage: err.message, amount: "" });
+      setState({ ...state, errorMessage: err.message });
     }
 
     setLoading(false);
-  }
+  };
 
   return (
-    <Box m={2} p={1} pt={6}>
-      <Grid container direction="column">
-        <Typography variant="h5">Contribute to this Campaign</Typography>
-        <form
-          className={classes.root}
-          autoComplete="off"
-          onSubmit={makeContribution}
-        >
-          <Grid item>
-            <Typography variant="h6">Amount to Contribute</Typography>
-            <Typography variant="caption" display="block" gutterBottom>
-              {`(Minimum Contribution: ${minContribution} Wei)`}
-            </Typography>
-            <TextField
-              id="outlined-amount"
-              required
-              value={state.amount}
-              onChange={handleChange}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">ether</InputAdornment>
-                ),
-              }}
-              type="number"
-              style={{ marginBottom: 10 }}
-            />
-          </Grid>
-          {state.errorMessage.length > 0 && (
-            <Alert severity="error">
-              <AlertTitle>Error</AlertTitle>
-              {state.errorMessage}
-            </Alert>
-          )}
-          <Grid item style={{ display: "flex", alignItems: "center" }}>
-            <div className={classes.wrapper}>
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                className={buttonClassname}
-                disabled={loading}
-              >
-                Contribute
-              </Button>
-              {loading && (
-                <CircularProgress
-                  size={24}
-                  className={classes.buttonProgress}
-                />
-              )}
-            </div>
-          </Grid>
-        </form>
-      </Grid>
-    </Box>
+    <Grid container direction="column">
+      <Typography variant="h5">Contribute to this Campaign</Typography>
+
+      <form
+        className={classes.root}
+        autoComplete="off"
+        onSubmit={makeContribution}
+      >
+        <Grid item>
+          <Typography variant="h6">Amount to Contribute</Typography>
+          <Typography variant="caption" display="block" gutterBottom>
+            {`(Minimum Contribution: ${minContribution} Wei)`}
+          </Typography>
+          <TextField
+            id="outlined-amount"
+            required
+            value={state.amount}
+            onChange={handleChange}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">ether</InputAdornment>
+              ),
+            }}
+            type="number"
+            style={{ marginBottom: 10 }}
+          />
+        </Grid>
+
+        {state.errorMessage.length > 0 && (
+          <Alert severity="error">
+            <AlertTitle>Error</AlertTitle>
+            {state.errorMessage}
+          </Alert>
+        )}
+
+        <Grid item style={{ display: "flex", alignItems: "center" }}>
+          <div className={classes.wrapper}>
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              className={buttonClassname}
+              disabled={loading}
+            >
+              Contribute
+            </Button>
+            {loading && (
+              <CircularProgress size={24} className={classes.buttonProgress} />
+            )}
+          </div>
+        </Grid>
+      </form>
+    </Grid>
   );
 }
