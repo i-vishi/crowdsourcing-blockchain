@@ -115,7 +115,7 @@ npm run dev
 
 ## :page_with_curl: License
 
-This project is built under MIT License. Check LICENSE for more details
+This project is built under MIT License. Check [LICENSE](LICENSE) for more details
 
 ---
 
