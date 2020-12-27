@@ -41,7 +41,7 @@ function ShowCampaign(props) {
       header: props.minimumContribution,
       meta: "Minimum Contribution (Wei)",
       description:
-        "The minimum contribution in Wei to enter to contribute to this campaign",
+        "The minimum amount in Wei to contribute to this campaign",
     },
     {
       header: props.approversCnt,
@@ -80,7 +80,11 @@ function ShowCampaign(props) {
                 variant="outlined"
               >
                 <CardContent>
-                  <Typography variant="h6" component="h4">
+                  <Typography
+                    variant="h6"
+                    component="h4"
+                    style={{ marginBottom: 10 }}
+                  >
                     {detail.header}
                   </Typography>
                   <Typography
@@ -97,7 +101,10 @@ function ShowCampaign(props) {
             </Grid>
           ))}
           <Grid item xs={12} md={6} lg={6}>
-            <Link href={`/campaigns/${address}/requests`}>
+            <Link
+              href={`/campaigns/${address}/requests`}
+              style={{ textDecoration: "none" }}
+            >
               <Button
                 style={{ margin: 10 }}
                 variant="contained"
@@ -110,7 +117,7 @@ function ShowCampaign(props) {
         </Grid>
       </Grid>
       <Grid item xs sm md lg>
-        <Box m={3} p={1} pt={4}>
+        <Box m={2} p={2}>
           <ContributeForm
             address={address}
             minContribution={props.minimumContribution}

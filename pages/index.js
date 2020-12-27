@@ -1,7 +1,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import {
-  Box, Button, Grid, Link, Typography,
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Grid,
+  Link,
+  Typography,
 } from "@material-ui/core";
 import React, { Component } from "react";
 import factory from "../ethereum/factory";
@@ -34,20 +41,28 @@ class CampaignHome extends Component {
         </Grid>
         <Grid item xs sm md lg>
           <Box m={2} p={2}>
-            <Typography variant="h5">Create a campaign?</Typography>
-            <Typography variant="body1" style={{ margin: 10 }}>
-              You can create a new campaign very easy. Click the below button to
-              proceed
-            </Typography>
-            <Link href="/campaigns/new">
-              <Button
-                style={{ margin: 10 }}
-                variant="contained"
-                color="primary"
-              >
-                Create Campaign
-              </Button>
-            </Link>
+            <Card style={{ minWidth: 275 }} variant="outlined">
+              <CardContent>
+                <Typography variant="h5" style={{ marginBottom: 10 }}>
+                  Create a campaign?
+                </Typography>
+                <Typography variant="body1">
+                  You can create a new campaign very easily. Click the below
+                  button to proceed
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Link href="/campaigns/new" style={{ textDecoration: "none" }}>
+                  <Button
+                    style={{ margin: 10 }}
+                    variant="contained"
+                    color="primary"
+                  >
+                    Create Campaign
+                  </Button>
+                </Link>
+              </CardActions>
+            </Card>
           </Box>
         </Grid>
       </Grid>

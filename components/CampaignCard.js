@@ -29,8 +29,11 @@ export default function CampaignCard({ campaign }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Link href={`/campaigns/${campaign.header}`}>
-          <Button size="small" color="primary">
+        <Link
+          href={`/campaigns/${campaign.header}`}
+          style={{ textDecoration: "none" }}
+        >
+          <Button variant="contained" size="small" color="primary">
             View Campaign
           </Button>
         </Link>

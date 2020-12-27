@@ -5,8 +5,10 @@ import clsx from "clsx";
 import { useRouter } from "next/router";
 import {
   Button,
+  Card,
+  CardActions,
+  CardContent,
   CircularProgress,
-  Grid,
   InputAdornment,
   makeStyles,
   TextField,
@@ -22,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
+      minWidth: 275,
     },
   },
   wrapper: {
@@ -82,15 +85,13 @@ export default function ContributeForm({ address, minContribution }) {
   };
 
   return (
-    <Grid container direction="column">
-      <Typography variant="h5">Contribute to this Campaign</Typography>
-
-      <form
-        className={classes.root}
-        autoComplete="off"
-        onSubmit={makeContribution}
-      >
-        <Grid item>
+    // <Grid container direction="column">
+    <Card className={classes.root} variant="outlined">
+      <form autoComplete="off" onSubmit={makeContribution}>
+        <CardContent>
+          <Typography variant="h5" style={{ marginBottom: 10 }}>
+            Contribute to this Campaign
+          </Typography>
           <Typography variant="h6">Amount to Contribute</Typography>
           <Typography variant="caption" display="block" gutterBottom>
             {`(Minimum Contribution: ${minContribution} Wei)`}
@@ -108,32 +109,33 @@ export default function ContributeForm({ address, minContribution }) {
             type="number"
             style={{ marginBottom: 10 }}
           />
-        </Grid>
-
-        {state.errorMessage.length > 0 && (
-          <Alert severity="error">
-            <AlertTitle>Error</AlertTitle>
-            {state.errorMessage}
-          </Alert>
-        )}
-
-        <Grid item style={{ display: "flex", alignItems: "center" }}>
-          <div className={classes.wrapper}>
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              className={buttonClassname}
-              disabled={loading}
-            >
-              Contribute
-            </Button>
-            {loading && (
-              <CircularProgress size={24} className={classes.buttonProgress} />
-            )}
-          </div>
-        </Grid>
+          {state.errorMessage.length > 0 && (
+            <Alert severity="error">
+              <AlertTitle>Error</AlertTitle>
+              {state.errorMessage}
+            </Alert>
+          )}
+          <CardActions style={{ display: "flex", alignItems: "center" }}>
+            <div className={classes.wrapper}>
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                className={buttonClassname}
+                disabled={loading}
+              >
+                Contribute
+              </Button>
+              {loading && (
+                <CircularProgress
+                  size={24}
+                  className={classes.buttonProgress}
+                />
+              )}
+            </div>
+          </CardActions>
+        </CardContent>
       </form>
-    </Grid>
+    </Card>
   );
 }

@@ -79,7 +79,7 @@ export default function NewCampaign() {
 
   return (
     <Box m={4}>
-      <Typography variant="h3" component="h1">
+      <Typography variant="h3" component="h1" style={{ marginBottom: 15 }}>
         Create a Campaign
       </Typography>
       <Grid container direction="column" alignItems="stretch">
@@ -93,15 +93,23 @@ export default function NewCampaign() {
               Minimum Contribution
             </Typography>
             <TextField
-              id="outlined-minimumContribution"
+              id="outlined-full-width-minimumContribution"
               required
+              style={{ margin: 8 }}
+              margin="normal"
               value={state.minimumContribution}
               onChange={handleChange}
+              placeholder="Minimum Contribution for this campaign"
+              fullWidth
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">Wei</InputAdornment>
                 ),
               }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="outlined"
               type="number"
             />
           </Grid>

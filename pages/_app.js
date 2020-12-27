@@ -32,8 +32,8 @@ export default function MyApp(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <TopNavBar />
-        <Container>
-          <Box m={1} p={1} pt={2}>
+        <Container maxWidth="lg">
+          <Box p={1} pt={2}>
             <Component {...pageProps} />
           </Box>
         </Container>

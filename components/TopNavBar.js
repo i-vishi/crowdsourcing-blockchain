@@ -1,26 +1,34 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {
   AppBar,
-  Button,
+  Container,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
   makeStyles,
   Toolbar,
   Typography,
 } from "@material-ui/core";
 import Link from "next/link";
 import React from "react";
+import AddIcon from "@material-ui/icons/Add";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
+const useStyles = makeStyles({
+  navbarDisplayFlex: {
+    display: "flex",
+    justifyContent: "space-between",
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
+  navDisplayFlex: {
+    display: "flex",
+    justifyContent: "space-between",
   },
-  title: {
-    flexGrow: 1,
+  linkText: {
+    textDecoration: "none",
+    textTransform: "uppercase",
+    color: "white",
   },
-  atag: { color: "white", textDecoration: "none" },
-}));
+});
 
 export default function TopNavBar() {
   const classes = useStyles();
@@ -28,26 +36,29 @@ export default function TopNavBar() {
   return (
     <AppBar position="static">
       <Toolbar variant="dense">
-        <Typography variant="h6" className={classes.title}>
+        <Container maxWidth="lg" className={classes.navbarDisplayFlex}>
           <Link href="/">
-            <a className={classes.atag}>CrowdsourceIt!</a>
+            <IconButton edge="start" color="inherit">
+              <Typography variant="h6">CrowdsourceIt!</Typography>
+            </IconButton>
           </Link>
-        </Typography>
-        <Button color="inherit">
-          <Link href="/">
-            <a className={classes.atag}>
-              <Typography color="inherit">Show All</Typography>
-            </a>
-          </Link>
-        </Button>
-
-        <Button color="inherit">
-          <Link href="/campaigns/new">
-            <a className={classes.atag}>
-              <Typography color="inherit">Create New</Typography>
-            </a>
-          </Link>
-        </Button>
+          <List
+            component="nav"
+            aria-labelledby="main navigation"
+            className={classes.navDisplayFlex}
+          >
+            <Link href="/">
+              <ListItem button className={classes.linkText}>
+                <ListItemText primary="campaigns" />
+              </ListItem>
+            </Link>
+            <Link href="/campaigns/new">
+              <ListItem button className={classes.linkText}>
+                <AddIcon />
+              </ListItem>
+            </Link>
+          </List>
+        </Container>
       </Toolbar>
     </AppBar>
   );
