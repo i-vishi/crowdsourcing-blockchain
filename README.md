@@ -120,8 +120,8 @@ This project is built under MIT License. Check LICENSE for more details
 ---
 
 <p align="center">
-  Built using  <a href="https://www.ethereum.org/" title="Ethereum"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/ethereum.svg" alt="Ethereum" width="30px" height="30px"></a>
-  <a href="https://github.com/ethereum/solidity" title="Solidity"><img src="https://docs.soliditylang.org/en/v0.8.0/_images/logo.svg" alt="Solidity" width="21px" height="21px"></a>
+  Built using  <a href="https://www.ethereum.org/" title="Ethereum"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/ethereum.svg" alt="Ethereum" width="25px" height="25px"></a>
+  <a href="https://github.com/ethereum/solidity" title="Solidity"><img src="https://docs.soliditylang.org/en/v0.8.0/_images/logo.svg" alt="Solidity" width="30px" height="30px"></a>
   <a href="https://zeit.co/next" title="Next.js"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/nextjs.svg" alt="Next.js" width="30px" height="30px"></a>
   <a href="https://material-ui.com/" title="Material UI"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/material-ui.svg" alt="Material UI" width="21px" height="21px"></a>
 </p>
