@@ -1,6 +1,6 @@
 # CrowdSourceIt
 
-**CrowdSourceIt!** is a crowdsourcing web application built using ethereum blochchain. The smart contract for this application is written entirely in [solidity](https://github.com/ethereum/solidity) (version: ^0.7.5). I have used [Next.js](https://github.com/vercel/next.js) for the web application and [Mocha](https://mochajs.org/) for testing.
+**CrowdSourceIt!** is a crowdsourcing web application built using ethereum blockchain. The smart contract for this application is written entirely in [solidity](https://github.com/ethereum/solidity) (version: ^0.7.5). I have used [Next.js](https://github.com/vercel/next.js) for the web application and [Mocha](https://mochajs.org/) for testing.
 
 ## :pushpin: Features
 
